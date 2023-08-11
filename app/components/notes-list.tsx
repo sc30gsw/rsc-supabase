@@ -6,13 +6,13 @@ import type { Database } from '../../database.types'
 type Note = Database['public']['Tables']['notes']['Row']
 
 const fetchNotes = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 2000))
+  await new Promise((resolve) => setTimeout(resolve, 2000))
   const res = await fetch(
     `${process.env.URL as string}/rest/v1/notes?select=*`,
     {
       headers: new Headers({ apiKey: process.env.API_KEY as string }),
-      // cache: 'no-store',
-      next: { revalidate: 10 },
+      cache: 'no-store',
+      // next: { revalidate: 10 },
     },
   )
 
