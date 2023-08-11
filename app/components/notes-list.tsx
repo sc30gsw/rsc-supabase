@@ -11,7 +11,8 @@ const fetchNotes = async () => {
     `${process.env.URL as string}/rest/v1/notes?select=*`,
     {
       headers: new Headers({ apiKey: process.env.API_KEY as string }),
-      cache: 'no-store',
+      // cache: 'no-store',
+      next: { revalidate: 10 },
     },
   )
 
